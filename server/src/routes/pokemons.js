@@ -32,7 +32,7 @@ function cpy (columnList) {
     return pokemons.map( pokemon => {
         let item = {};
         for (const col of columnList) 
-            item[col] = pokemon[col] // copier la colonne de nom 'col' dans item
+            item[col] = pokemon[col] // copier la colonne de nom 'col' dans item.
         return item;
     })
 }
