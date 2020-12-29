@@ -4,6 +4,7 @@ function IdentityAttribute(props) {
     const pokemon = props.data; 
     let listItems = Object.keys(pokemon).filter(p => p !== 'attaques')
     
+    
     //.map( <PokemonAttribute name={p} value={this.state.pokemon[p]} />)
         .map( p =>  
             <li>
@@ -67,6 +68,7 @@ class PokedexDetails extends Component {
                 <div className='Attaques'>
                     <Attaques list ={ this.state.pokemon.attaques || [] }/>
                 </div>
+                
             </div>
 
         )       

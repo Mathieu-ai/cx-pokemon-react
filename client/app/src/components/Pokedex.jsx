@@ -26,6 +26,7 @@ class Pokedex extends Component {
     render() {
         return (
             <div>
+                
                 <input className='search_bar' type="text" placeholder="Search..." value={this.state.value} onChange={this.handleChange} />
                 <div className="search">
                 </div>                

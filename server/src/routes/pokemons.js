@@ -12,21 +12,10 @@ const columnListId = [
     "nomja",
     "nomtm",
     "nomde",
-    "jdex",
-    "njdex",
-    "hdex",
-    "fdex",
-    "odex",
-    "opdex",
     "espece",
     "taille",
     "poids",
-    "fmratio",
-    "oeufpas",
     "type1",
-    "expmax",
-    "captureval",
-    "groupoeuf1",
     "capspe1",
     "couleur",
     "forme",
@@ -36,6 +25,7 @@ const columnListId = [
 const columnListPokedex = [  
 	"numéro",
     "nom",
+    "type1",
 ]
 
 function cpy (columnList) {
