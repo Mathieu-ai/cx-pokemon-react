@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
 function IdentityAttribute(props) {
-    const pokemon = props.data;
+    const pokemon = props.data; 
     let listItems = Object.keys(pokemon).filter(p => p !== 'attaques')
+    
     //.map( <PokemonAttribute name={p} value={this.state.pokemon[p]} />)
         .map( p =>  
             <li>
@@ -12,6 +13,7 @@ function IdentityAttribute(props) {
     return (
       <ul>{listItems}</ul>
     );
+   
 }
 
 function AttaqueAttribute(props) {

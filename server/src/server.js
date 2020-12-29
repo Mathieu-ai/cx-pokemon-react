@@ -1,8 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-
 const pokemons = require('./routes/pokemons');
-const pokemon = require('./routes/pokemon');
 
 console.log('starting server')
 
@@ -19,15 +17,8 @@ app.use( function(req, res, next) {         // pour un meilleure analyse des tra
     next();
 })
 
+app.use("/pokemons/", pokemons,);
 
-app.use('/pokemons', pokemons)
-//app.use('/pokemon/:id', pokemon)
-
-/*app.use('/pokemon/:id', function(req, res, next) {         
-    console.log(  req.method, req.originalUrl ); // req.params.id
-    next();
-})
-*/
 const PORT = process.env.PORT || 8080
 app.listen(PORT, () => {
     console.log(`Server is listening on ${PORT}`)
