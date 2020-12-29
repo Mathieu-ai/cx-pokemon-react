@@ -32,6 +32,8 @@
   from {
     transform: rotate(0deg);
   }
+
+  
   to {
     transform: rotate(360deg);
   }
@@ -67,15 +69,15 @@
 }
 
 .Pokedex {
-  column-count: 3;
-  column-gap: 50px;
-  column-rule-style: solid;
-  column-rule-width: 0px;
-  display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	height: 100%;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(5, 10fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  width:100%;
+  margin-top: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .img {
@@ -83,9 +85,7 @@
   display: flex;
   flex-direction: column;
   width: 12%;
-
 }
-
 
 .Card {
   padding: 10px;
