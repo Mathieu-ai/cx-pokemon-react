@@ -5,35 +5,38 @@ const router = Router()
 
 // :: GET /pokemons -> Get all pokemons
 
-const columnListId = [  
-	"numéro",
-    "nom",
-    "nomen",
-    "nomja",
-    "nomtm",
-    "nomde",
-    "espece",
-    "taille",
-    "poids",
-    "type1",
-    "capspe1",
-    "couleur",
-    "forme",
-    "attaques"
+
+let columnListId = [  
+	{ "numéro":"Numéro"},
+    {"nom":"Nom (FR)"},
+    {"nomen":"Nom (EN)"},
+    {"nomja":"Nom (JA)"},
+    {"nomtm":"Nom (TM)"},
+    {"nomde":"Nom (DE)"},
+    {"espece":"Espèce"},
+    {"taille":"Taille"}, 
+    {"poids": "Poids"},
+    {"type1": "Type"},
+    {"capspe1": "Talent"},
+    {"couleur": "Couleur"},
+    {"forme": "Forme"},
+    {"attaques": "Attaques"}
 ]
 
-const columnListPokedex = [  
-	"numéro",
-    "nom",
-    "type1",
+let columnListPokedex = [  
+	{ "numéro":"Numéro"},
+    {"nom":"Nom (FR)"},
+    {"type1": "Type"}
 ]
 
 function cpy (columnList) {
     return pokemons.map( pokemon => {
         let item = {};
-        for (const col of columnList) 
-            item[col] = pokemon[col] // copier la colonne de nom 'col' dans item.
-        return item;
+            for (const col of columnListId) {
+        let propJson = Object.keys( col )[0]
+        let libelle = col[ propJson ]
+            return item;
+        }
     })
 }
 

@@ -70,14 +70,16 @@
 
 .Pokedex {
   display: grid;
-  grid-template-columns: repeat(5, 10fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-  width:100%;
+  width: auto;
   margin-top: 100px;
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
+  padding-right: 100px;
+  padding-left: 100px;
 }
 
 .img {
@@ -104,7 +106,7 @@
 	height: 300px;
 	width: 185px;
 	box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
-	border-radius: 20px;
+  border-radius: 20px;
 }
 
 .search_bar {
@@ -153,14 +155,186 @@
   background: linear-gradient(to right, #a1a1a183, #a1a1a183); 
 }
 
+.Pok {
+  width: 70%;
+
+}
+
+.imgDetails {
+	color: #212529;
+	display: flex;
+	flex-direction: column;
+  margin-right: 100px;
+	padding: auto;
+  box-sizing: border-box; 
+  border-radius: 150px;
+  background: linear-gradient(to right, #d0ece7, #edeed8);
+	height: 200px;
+  width: 200px;
+	
+}
+
+#imagePok {
+  width: 95%;
+  margin-top: 10px;
+}
+
+
+
+
 .Identity {
   background-color: tomato;
   columns: 5;
   padding: 10px;
+  margin-top: 30px;
   
 }
 
-.BoxInfo {
-  background-color: blue transparent;
-  columns: 3;
+.Attaques {
+  margin-top: 300px;
+}
+
+
+.ID {
+  font-family: 'Bangers', cursive;
+  font-size: 40px;
+  position: relative;
+  z-index: 10;
+  color: #212529;
+  box-shadow: #212529;
+  
+}
+
+.wrap{
+  margin-left:20px;
+}
+
+.box{
+  width:40%;
+  height:200px;
+  float:left;
+  background-color:white; 
+  margin:25px 15px;
+  border-radius:5px;
+}
+
+.box {
+  font-weight:normal;
+  text-align:center;
+  padding-top:60px;
+  color:#fff;
+}
+
+.box1{
+  background: linear-gradient(to right, #d0ece7, #edeed8);
+}
+
+.shadow1 {
+  position:relative;
+}
+
+.shadow1 {
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.1) inset;
+}
+
+/***************************************************************
+*dashed border
+***************************************************************/
+
+.shadow1  {
+  width:50%;
+  height:100px;
+  margin-left:6%;
+  border:2px dashed #F7EEEE;
+  border-radius:5px;
+}
+
+/****************************************************************
+*styling shadows
+****************************************************************/
+
+.shadow1:before, .shadow1:after{
+  position:absolute;
+  content:"";
+  bottom:12px;left:15px;top:80%;
+  width:45%;
+  background:#9B7468;
+  z-index:-1;
+  -webkit-box-shadow: 0 20px 15px #9B7468;
+  -moz-box-shadow: 0 20px 15px #9B7468;
+  box-shadow: 0 20px 15px #9B7468;
+  -webkit-transform: rotate(-6deg);
+  -moz-transform: rotate(-6deg);
+  transform: rotate(-6deg);
+  display: flex;
+  flex-direction: center;
+}
+
+.shadow1:after{
+  -webkit-transform: rotate(6deg);
+  -moz-transform: rotate(6deg);
+  transform: rotate(6deg);
+  right: 15px;left: auto;
+}
+
+.shadow1 {
+  margin-left: 500px;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+html, body{
+  height: 100%;
+  font-weight: 800;
+}
+
+body{
+  background: #c7efff;
+  font-family: Arial;
+}
+
+svg {
+  display: block;
+  font: 10.5em 'Montserrat';
+  width: 960px;
+  height: 300px;
+  margin: 0 auto;
+}
+
+.text-copy {
+  fill: none;
+  stroke: white;
+  stroke-dasharray: 6% 29%;
+  stroke-width: 5px;
+  stroke-dashoffset: 0%;
+  animation: stroke-offset 5.5s infinite linear;
+}
+
+.text-copy:nth-child(1){
+	stroke: #4D163D;
+	animation-delay: -1;
+}
+
+.text-copy:nth-child(2){
+	stroke: #840037;
+	animation-delay: -2s;
+}
+
+.text-copy:nth-child(3){
+	stroke: #BD0034;
+	animation-delay: -3s;
+}
+
+.text-copy:nth-child(4){
+	stroke: #BD0034;
+	animation-delay: -4s;
+}
+
+.text-copy:nth-child(5){
+	stroke: #FDB731;
+	animation-delay: -5s;
+}
+
+@keyframes stroke-offset{
+	100% {stroke-dashoffset: -35%;}
 }
