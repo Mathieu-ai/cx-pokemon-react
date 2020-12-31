@@ -32,8 +32,8 @@ class Pokedex extends Component {
                 </div>                
             <div className='Pokedex'>
                 { this.state.pokemons
-                    .filter(pokemon => { return !this.state.value || new RegExp(this.state.value).test( pokemon.nom )? true:false})                   
-                    .map(pokemon => ( <PokemonCard id={pokemon.numéro} name={pokemon.nom} type={pokemon.type1} image={pokemon.numéro} /> ))}                
+                    .filter(pokemon => { return !this.state.value || new RegExp(this.state.value).test( pokemon.Nom )? true:false})                   
+                    .map(pokemon => ( <PokemonCard id={pokemon.Numéro} name={pokemon.Nom} type={pokemon.Type} image={pokemon.Numéro} /> ))}                
             </div>
             </div>
         )       

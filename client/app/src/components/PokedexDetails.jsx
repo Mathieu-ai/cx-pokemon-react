@@ -4,8 +4,8 @@ function IdentityAttribute(props) {
     const pokemon = props.data; 
     let listItems = Object.keys(pokemon)
     .filter(p => p !== 'attaques')
-    .filter(p => p !== 'nom')
-    .filter(p => p !== 'numéro')
+    .filter(p => p !== 'Nom')
+    .filter(p => p !== 'Numéro')
     
     
     //.map( <PokemonAttribute name={p} value={this.state.pokemon[p]} />)
@@ -58,7 +58,7 @@ class PokedexDetails extends Component {
         const pokemon = await response.json()
 
         this.setState( {pokemon} );
-        this.setState( { nom : pokemon.nom } );
+        this.setState( { nom : pokemon.Nom } );
     }
 // 
 //<AttaquesAttribute data={this.state.pokemon.attaques && this.state.pokemon.attaques[0]}/>
@@ -69,15 +69,15 @@ class PokedexDetails extends Component {
             <div>
                 <svg viewBox="0 0 960 300">
 	                <symbol id="s-text">
-		                <text text-anchor="middle" x="50%" y="80%">{this.state.pokemon.nom}</text>
+		                <text textAnchor="middle" x="50%" y="80%">{this.state.pokemon.Nom}</text>
 	                </symbol>
 
-	            <g class = "g-ants">
-		            <use xlinkHref="#s-text" class="text-copy"></use>
-		            <use xlinkHref="#s-text" class="text-copy"></use>
-		            <use xlinkHref="#s-text" class="text-copy"></use>
-		            <use xlinkHref="#s-text" class="text-copy"></use>
-		            <use xlinkHref="#s-text" class="text-copy"></use>
+	            <g className = "g-ants">
+		            <use xlinkHref="#s-text" className="text-copy"></use>
+		            <use xlinkHref="#s-text" className="text-copy"></use>
+		            <use xlinkHref="#s-text" className="text-copy"></use>
+		            <use xlinkHref="#s-text" className="text-copy"></use>
+		            <use xlinkHref="#s-text" className="text-copy"></use>
 	            </g>
                 </svg>
             </div>
@@ -90,7 +90,7 @@ class PokedexDetails extends Component {
 
             <div className='imgDetails'>
                         < img id="imagePok" src= {'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/' 
-                        + this.state.pokemon.numéro + '.png'} alt='Undefined' />
+                        + this.state.pokemon.Numéro + '.png'} alt='Undefined' />
             </div>
             
 

@@ -8,7 +8,7 @@ const router = Router()
 
 let columnListId = [  
 	{ "numéro":"Numéro"},
-    {"nom":"Nom (FR)"},
+    {"nom":"Nom"},
     {"nomen":"Nom (EN)"},
     {"nomja":"Nom (JA)"},
     {"nomtm":"Nom (TM)"},
@@ -29,25 +29,46 @@ let columnListPokedex = [
     {"type1": "Type"}
 ]
 
-function cpy (columnList) {
-    return pokemons.map( pokemon => {
-        let item = {};
-            for (const col of columnListId) {
-        let propJson = Object.keys( col )[0]
-        let libelle = col[ propJson ]
-            return item;
-        }
-    })
+let columnListAttaques = [
+    {"niveau": "Niveau"},
+    {"nom": "Nom"},
+    {"puissance": "Puissance"},
+    {"precision": "Précision"},
+    {"pp": "PP"}
+]
+
+/**
+ * (Cette documentation est une 'javadoc')
+ * change les propriétés de liste avec la table de correspondance columnList 
+ * @param {string[]} columnList 
+ * @param {Object} list 
+ * @return {Object} List avec les nouvelles propriétés
+ */ 
+function cpy (columnList, list) {
+    return list.map( record => {
+        let item = {};	       
+        for (const col of columnList) {
+            var propJson = Object.keys( col )[0];
+            let libelle = col[ propJson ];
+            if (propJson == "attaques") {
+                item[libelle] = cpy (columnListAttaques, record[ propJson])
+            } else {
+                item[libelle] = record[propJson] ;    // copier la colonne de nom 'col' dans item	
+            }
+        }                 
+        return item;	       
+    })	  
+
 }
 
-const pokemonsPokedex = cpy( columnListPokedex).sort((a, b) => (a.numéro > b.numéro) ? 1 : -1 )
-const pokemonsId      = cpy( columnListId).sort((a, b) => (a.numéro > b.numéro) ? 1 : -1 )
+const pokemonsPokedex = cpy( columnListPokedex, pokemons).sort((a, b) => (a.Numéro > b.Numéro) ? 1 : -1 )
+const pokemonsId      = cpy( columnListId, pokemons).sort((a, b) => (a.Numéro > b.Numéro) ? 1 : -1 )
 
 router.get('/', (_, response) => {
     response.json(pokemonsPokedex)
 })
 router.get('/:id', (req, response) => {
-    let rc = pokemonsId.find(pokemon => pokemon.numéro == req.params.id);
+    let rc = pokemonsId.find(pokemon => pokemon.Numéro == req.params.id);
     return response.send(rc)   
     
 })
