@@ -8,7 +8,7 @@ const router = Router()
 
 let columnListId = [  
 	{ "numéro":"Numéro"},
-    {"nom":"Nom"},
+    {"nom":"Nom (FR)"},
     {"nomen":"Nom (EN)"},
     {"nomja":"Nom (JA)"},
     {"nomtm":"Nom (TM)"},

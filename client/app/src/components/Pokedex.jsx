@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import PokemonCard from './PokemonCard';
 
+const NOM = "Nom (FR)"
+
 class Pokedex extends Component {
     constructor(props) {
         super(props);
@@ -32,8 +34,8 @@ class Pokedex extends Component {
                 </div>                
             <div className='Pokedex'>
                 { this.state.pokemons
-                    .filter(pokemon => { return !this.state.value || new RegExp(this.state.value).test( pokemon.Nom )? true:false})                   
-                    .map(pokemon => ( <PokemonCard id={pokemon.Numéro} name={pokemon.Nom} type={pokemon.Type} image={pokemon.Numéro} /> ))}                
+                    .filter(pokemon => { return !this.state.value || new RegExp(this.state.value).test( pokemon[NOM] )? true:false})                   
+                    .map(pokemon => ( <PokemonCard id={pokemon.Numéro} name={pokemon[NOM]} type={pokemon.Type} image={pokemon.Numéro} /> ))}                
             </div>
             </div>
         )       

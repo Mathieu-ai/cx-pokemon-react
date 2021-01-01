@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 
+
 function IdentityAttribute(props) {
     const pokemon = props.data; 
     let listItems = Object.keys(pokemon)
-    .filter(p => p !== 'attaques')
+    .filter(p => p !== 'Attaques')
     .filter(p => p !== 'Nom')
     .filter(p => p !== 'Numéro')
+    .filter(p => p !== 'Talent')
     
     
     //.map( <PokemonAttribute name={p} value={this.state.pokemon[p]} />)
         .map( p =>  
-            <li>
-                {p + ' = ' + pokemon[p]}
-            </li>
+            <div className='pokemonAttribute'>
+                <span className="AttributeName"> {p} </span>
+                <span className="AttributeValue"> {pokemon[p]} </span>
+            </div>
         );
     return (
-      <ul>{listItems}</ul>
+      listItems
     );
    
 }
@@ -24,9 +27,10 @@ function AttaqueAttribute(props) {
     const attaque = props.data;
     let listItems = Object.keys(attaque||{})
         .map( p =>  
-            <li>
-                {p + '= ' + attaque[p]}
-            </li>
+            <div className='ATTAQUES'>
+                <span className="pAtt"> {p} </span>
+                <span className="AttaqueP"> {attaque[p]} </span>
+            </div>
         );
     return (
       <ul>{listItems}</ul>
@@ -36,9 +40,8 @@ function AttaqueAttribute(props) {
 function Attaques( { list } ) {
     return (
         <div>
-          {list.map( (attaque,indice) => (
-            <div>
-                <h1>{indice+1}</h1>
+          {list.map( (attaque) => (
+            <div className="AttTemp">
                 <AttaqueAttribute data={attaque}/>
             </div>
           ))}
@@ -46,7 +49,7 @@ function Attaques( { list } ) {
       );
 }
 
-
+const NOM = "Nom (FR)"
 class PokedexDetails extends Component {
     constructor(props) {
         super(props);
@@ -58,7 +61,7 @@ class PokedexDetails extends Component {
         const pokemon = await response.json()
 
         this.setState( {pokemon} );
-        this.setState( { nom : pokemon.Nom } );
+        this.setState( { nom : pokemon[NOM] } );
     }
 // 
 //<AttaquesAttribute data={this.state.pokemon.attaques && this.state.pokemon.attaques[0]}/>
@@ -69,7 +72,7 @@ class PokedexDetails extends Component {
             <div>
                 <svg viewBox="0 0 960 300">
 	                <symbol id="s-text">
-		                <text textAnchor="middle" x="50%" y="80%">{this.state.pokemon.Nom}</text>
+		                <text textAnchor="middle" x="50%" y="80%">{this.state.pokemon[NOM]}</text>
 	                </symbol>
 
 	            <g className = "g-ants">
@@ -82,10 +85,29 @@ class PokedexDetails extends Component {
                 </svg>
             </div>
 
-            <div>
+            <div className='Numéro'>
+                <main>
+                    <span>
+                        <p>
+                            #{this.state.pokemon.Numéro}
+                        </p>
+                    </span>
+                </main>                
+            </div>
 
-
-                
+            <div className="TABLE">
+                <table class="container">
+	                <thead>
+		                <tr>
+			                <th><h1>Identité</h1></th>
+		                </tr>
+	                </thead>
+	                    <tbody>
+	    	                <tr>
+			                    <td className="TD"><IdentityAttribute data={this.state.pokemon}/></td>
+		                    </tr>
+	                    </tbody>
+                </table>
             </div>
 
             <div className='imgDetails'>
@@ -93,12 +115,8 @@ class PokedexDetails extends Component {
                         + this.state.pokemon.Numéro + '.png'} alt='Undefined' />
             </div>
             
-
-                <div className='Identity'>
-                    <IdentityAttribute data={this.state.pokemon}/>
-                </div>
                 <div className='Attaques'>
-                    <Attaques list ={ this.state.pokemon.attaques || [] }/>
+                    <Attaques list ={ this.state.pokemon.Attaques || [] }/>
                 </div>
             
                     

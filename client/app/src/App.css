@@ -39,6 +39,37 @@
   }
 }
 
+
+main {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+p {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  font-size: 2rem;
+  background: linear-gradient(to bottom, rgb(129, 158, 255), rgb(129, 158, 255) 60%, rgb(0, 0, 0) 60%, rgb(0, 0, 0) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-repeat: no-repeat;
+  transition: background 0.2s ease-out;
+  white-space: nowrap;
+}
+
+
+
+p:hover {
+  background-position: 0 11px;
+}
+
+
+
+
 .h1, .h2 {
 	line-height: 1.2;
 	margin-bottom: 0.5rem;
@@ -180,13 +211,26 @@
 }
 
 
+table,
+td {
+    border: 1px solid #333;
+    width: 400px;
+}
 
+thead,
+tfoot {
+    background-color: #333;
+    color: #fff;
+}
 
 .Identity {
   background-color: tomato;
-  columns: 5;
+  columns: 2;
   padding: 10px;
   margin-top: 30px;
+  margin-left: 350px;
+  table-layout: fixed;
+  width: 50%;
   
 }
 
@@ -337,4 +381,147 @@ svg {
 
 @keyframes stroke-offset{
 	100% {stroke-dashoffset: -35%;}
+}
+
+
+
+
+h1 {
+  font-size:60px; 
+  font-weight: 300;
+  line-height:1em;
+  text-align: center;
+  color: #4DC3FA;
+  columns: 2;
+}
+
+
+.blue { color: rgb(255, 0, 0); }
+.yellow { color: #FFF842; }
+
+.container th h1 {
+	  font-weight: bold;
+	  font-size: 2em;
+  text-align: left;
+  color: #ffffff;
+  border: none;
+  
+}
+
+
+
+
+.container {
+	  text-align: left;
+	  overflow: hidden;
+	  width: 30%;
+	  margin: 0 auto;
+  display: table;
+  padding: 0 0 8em 0;
+  border: none;
+  
+}
+
+.container td, .container th {
+	  padding-bottom: 2%;
+	  padding-top: 2%;
+  padding-left:2%;  
+  border: none;
+  
+  
+}
+
+/* Background-color of the odd rows */
+.container tr:nth-child(odd) {
+    background-color: #b9ddff;
+    background-color: tomato;
+    border-bottom: 1px solid #000;
+    
+}
+
+
+.container th {
+    background-color: #a6c8ff;
+    font-family: 'Fredoka One', cursive;
+    
+    
+}
+
+.container td:first-child { 
+  color: #000000;
+  font-family: 'Righteous', cursive;
+  font-weight: bold;
+  columns: 2;
+  margin-left : 100px;
+  
+  
+  
+
+}
+
+.container tr:hover {
+   background-color: #464A52;
+-webkit-box-shadow: 0 6px 6px -6px #0E1119;
+	   -moz-box-shadow: 0 6px 6px -6px #0E1119;
+          box-shadow: 0 6px 6px -6px #0E1119;
+          
+          
+          
+}
+
+.container td:hover {
+  background-color: #FFF842;
+  color: #403E10;
+  font-weight: bold;
+  
+  
+  
+  
+  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+  transform: translate3d(6px, -6px, 0);
+  
+  transition-delay: 0s;
+	  transition-duration: 0.4s;
+	  transition-property: all;
+  transition-timing-function: line;
+}
+
+
+
+.Numéro {
+  margin-top: -70px;
+}
+
+
+.TABLE {
+  margin-left: 500px;
+  background-color: #403E10;
+  
+  
+}
+
+.pokemonAttribute {
+  /* background-color: #403E10; */
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  
+}
+
+.TD {
+  border-bottom: 1px solid #000;
+  /* background-color: tomato; */
+}
+
+
+.AttTemp{
+  
+	color: #212529;
+  background: linear-gradient(to right, #d0ece7, #edeed8);
+  box-sizing: border-box; 
+	height: 300px;
+	width: 185px;
+	box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+  border-radius: 20px;
 }
