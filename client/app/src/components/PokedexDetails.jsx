@@ -68,8 +68,9 @@ class PokedexDetails extends Component {
     render() {
         return (
 <div>            
-            
-            <div>
+            <div>  
+                <div>
+                </div>
                 <svg viewBox="0 0 960 300">
 	                <symbol id="s-text">
 		                <text textAnchor="middle" x="50%" y="80%">{this.state.pokemon[NOM]}</text>

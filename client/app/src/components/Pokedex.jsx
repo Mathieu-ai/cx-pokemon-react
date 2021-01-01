@@ -27,6 +27,7 @@ class Pokedex extends Component {
 
     render() {
         return (
+<div>
             <div>
                 
                 <input className='search_bar' type="text" placeholder="Search..." value={this.state.value} onChange={this.handleChange} />
@@ -38,6 +39,7 @@ class Pokedex extends Component {
                     .map(pokemon => ( <PokemonCard id={pokemon.Numéro} name={pokemon[NOM]} type={pokemon.Type} image={pokemon.Numéro} /> ))}                
             </div>
             </div>
+</div>
         )       
     }    
 }
