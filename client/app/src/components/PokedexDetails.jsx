@@ -64,7 +64,7 @@ class PokedexDetails extends Component {
         this.setState( { nom : pokemon[NOM] } );
     }
 // 
-//<AttaquesAttribute data={this.state.pokemon.attaques && this.state.pokemon.attaques[0]}/>
+//<AttaquesAttribute data={this.state.pokemon.attaques && this.state.pokemon.attaques[0]} 2/>
     render() {
         return (
 <div>            
