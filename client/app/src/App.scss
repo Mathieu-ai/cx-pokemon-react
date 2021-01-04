@@ -1,0 +1,627 @@
+.App {
+  text-align       : center;
+}
+
+.App-logo {
+  height           : 40vmin;
+  pointer-events   : none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation      : App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color : #282c34;
+  min-height       : 100vh;
+  display          : flex;
+  flex-direction   : column;
+  align-items      : center;
+  justify-content  : center;
+  font-size        : calc(10px + 2vmin);
+  color            : white;
+}
+
+.App-link {
+  color            : #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform      : rotate(0deg);
+  }
+
+  
+  to {
+    transform      : rotate(360deg);
+  }
+}
+
+/*---------------------------FUNCTION SCSS (Version 4.14.1)---------------------------------------*/
+
+@function pow($number, $exp) {
+  $value           : 1;
+  @if $exp > 0 {
+    @for $i from 1 through $exp {
+      $value: $value * $number;
+    }
+  }
+  @else if $exp < 0 {
+    @for $i from 1 through -$exp {
+      $value: $value / $number;
+    }
+  }
+  @return $value;
+}
+
+@function fact($number) {
+  $value: 1;
+  @if $number > 0 {
+    @for $i from 1 through $number {
+      $value: $value * $i;
+    }
+  }
+  @return $value;
+}
+
+@function pi() {
+  @return 3.14159265359;
+}
+
+@function rad($angle) {
+  $unit: unit($angle);
+  $unitless      : $angle / ($angle * 0 + 1);
+  // If the angle has 'deg' as unit, convert to radians
+  @if $unit == deg {
+    $unitless    : $unitless / 180 * pi();
+  }
+  @return $unitless;
+}
+
+@function sin($angle) {
+  $sin: 0;
+  $angle: rad($angle);
+  // Iterate a bunch of times
+  @for $i from 0 through 10 {
+    $sin: $sin + pow(-1, $i) * pow($angle, (2 * $i + 1)) / fact(2 * $i + 1);
+  }
+  @return $sin;
+}
+
+@function cos($angle) {
+  $cos             : 0;
+  $angle           : rad($angle);
+  // Iterate a bunch of times
+  @for $i from 0 through 10 {
+    $cos           : $cos + pow(-1, $i) * pow($angle, 2 * $i) / fact(2 * $i);
+  }
+  @return $cos;
+}
+
+@mixin shade($type, $color: #3498db, $borderColor: #fff, $depth: 20, $angle: 135deg, $long: false, $fade: false) {
+    $angle         : ($angle - 90);
+    $x             : 1.1 * cos($angle) + 0px;
+    $y             : 1.1 * sin($angle) + 0px;
+    $darken        : (lightness($color)/$depth)/2;
+    $opacify       : 0;
+    $shadow        : ();
+
+    @if $long == true{
+      $darken:0;
+    }
+
+    @if $fade == true {
+      $opacify: (opacity($color)/$depth) ;
+        // rendering in some browsers
+      @include translateZ(0);
+    }
+
+    @for $i from 1 through $depth {
+      $shadow: $shadow, $i*$x $i*$y 0 hsla(hue($color) , saturation($color), (lightness($color) - ($i * $darken)), 1 - ($i * $opacify));
+    }
+    #{$type}-shadow :  1.5px 1.5px 0 $borderColor,
+                      0px 1.5px 0 $borderColor,
+                      -1.5px -1.5px 0 $borderColor,
+                      -1.5px -1.5px 0 $borderColor,
+                      -1.5px 1.5px 0 $borderColor,
+                       1.5px -1.5px 0 $borderColor,
+                       $shadow;
+}
+
+//basic outline for the text
+@mixin outline($color: #fff) {
+	text-shadow: 1.5px 1.5px 0 $color,
+    			 -1.5px -1.5px 0 $color,
+    			 -1.5px -1.5px 0 $color,
+    			 -1.5px 1.5px 0 $color,
+    			 1.5px -1.5px 0 $color;
+}
+
+/*---------------------------FUNCTION SCSS (Version 4.14.1)---------------------------------------*/
+
+/*---------------------------COLORS--------------------------------------*/
+
+$pink		           : #f89bb4;
+$pinkPastel	       : #ebaca5;
+$pinkDark	         : #e62915;
+$pinkGrayed	       : #d38076;
+$grayLight	       : #cac6c5;
+$offWhite	         : #e7e7e7;
+$h1                : rgba(45,45,45,1);
+$blue              : #98b5cc;
+$yellow            : #ffcc00;
+$outline           : rgba(#fff, .4);
+$shadow            : rgba($yellow, .5);
+
+/*---------------------------COLORS--------------------------------------*/
+
+/*---------------------------FONTS--------------------------------------*/
+@import url(https://fonts.googleapis.com/css?family=Francois+One);
+@import url(https://fonts.googleapis.com/css?family=PT+Sans);
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+@import url(https:fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+/*---------------------------FONTS--------------------------------------*/
+
+/*---------------------------BODY---------------------------------------*/
+
+body {
+  margin             : 0;
+  padding            : 0;
+  min-height         : 100vh;
+  background         : #333;
+  display            : flex;
+  justify-content    : center;
+  align-items        : right;
+  font-size          : 62.5%;
+}
+
+/*---------------------------BODY---------------------------------------*/
+
+/*---------------------------HOVER TEXTS--------------------------------------*/
+
+h1 {
+	font-family        : 'PT Sans', sans-serif;
+	text-transform     : uppercase;
+}
+h1 {
+  font-size          : 2.4em;
+  background-color   : rgba(41, 41, 41, 1);
+  text-align         : center;
+  padding            : 20px;
+  margin             : 0;
+  color              : #fff;
+  
+  a {
+    display          : block;
+    margin-top       : 10px;
+    text-transform   : none;
+    color            : #aaa;
+    font-size        : 16px;
+    text-decoration  : none;
+  }
+}
+
+// Outer heading wrapper (for descriptions, not for the actual effects)
+.headingOuter {
+	background         : #f1f1f1;
+	text-align         : center;
+	margin-top         : 30px;
+	border-top         : 1px solid #333;
+	border-bottom      : 1px solid #333;
+
+	&:first-child {
+		margin-top       : 0;
+  }
+  
+  h1 + & {
+    margin-top       : 10px;
+  }
+}
+.headingWrapper {
+	text-align         : center;
+	background-color   : #fff;
+	padding            : 10px;
+}
+
+// default header class 
+.header {
+	display            : inline-block;
+	text-align         : center;
+	font-family        : 'Francois One', Helvetica, Arial, sans-serif;
+	font-size          : 96px;
+	color              : $offWhite;
+	text-decoration    : none;
+
+	@include outline($grayLight);
+
+	transition: all 0.8s ease-in-out;
+}
+
+// effect for pushing the text down onto the page
+.header--pushDown {
+	@include shade(text, #aaa, #333, 10, 135deg, true);
+
+	&:hover {
+		transform         : translate(9px, 9px);
+		@include outline($grayLight);
+	}
+}
+  	
+	//push down text
+	 .header--pushDown {
+		@include shade(text, $pinkDark, #fff, 10, 135deg, true);
+
+		&:hover {
+			@include outline($pinkGrayed);
+		}
+	}
+
+/*---------------------------HOVER TEXT EXEMPLES---------------------------------------*/
+
+/*---------------------------TABLE OF ATTRIBUTES---------------------------------------*/
+
+  * {
+   box-sizing      : border-box;
+ }
+
+  h4 {
+    font-size      :2em; 
+    font-weight    : 300;
+    line-height    :1em;
+    text-align     : center;
+    color          : #4DC3FA;
+  
+  }
+ 
+  .blue { 
+    color          : #185875; 
+  }
+  .yellow { 
+    color          : #FFF842; 
+  }
+ 
+  .container th h4 {
+    font-weight    : bold;
+    font-size      : 2em;
+    text-align     : left;
+    color          : #185875;
+  }
+ 
+  .container td {
+    font-weight    : normal;
+    font-size      : 1em;
+    -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+    -moz-box-shadow: 0 2px 2px -2px #0E1119;
+    box-shadow     : 0 2px 2px -2px #0E1119;
+  }
+ 
+  .container {
+    text-align     : left;
+    overflow       : hidden;
+    width          : 80%;
+    margin         : 0 auto;
+    display        : table;
+    padding        : 0 0 8em 0;
+  }
+ 
+  .container td, .container th {
+      padding-bottom: 2%;
+      padding-top  : 2%;
+    padding-left   :2%;  
+  }
+ 
+  /* Background-color of the odd rows */
+  .container tr:nth-child(odd) {
+      background-color: #323C50;
+  }
+ 
+  /* Background-color of the even rows */
+  .container tr:nth-child(even) {
+      background-color: #2C3446;
+  }
+ 
+  .container th {
+      background-color: #1F2739;
+  }
+ 
+  .container td.QUESTION{ 
+    color        : #a4fcff; 
+    font-size    : 20px;
+  
+  }
+
+  .container td.ANSWER{ 
+    color        : #ffffff; 
+    font-size    : 20px;
+    text-align   : center;
+  
+  }
+
+  .container tr:hover {
+     background-color: #464A52;
+  -webkit-box-shadow: 0 6px 6px -6px #0E1119;
+       -moz-box-shadow: 0 6px 6px -6px #0E1119;
+            box-shadow: 0 6px 6px -6px #0E1119;
+  }
+ 
+  .container td:hover {
+    background-color: #FFF842;
+    color        : #403E10;
+    font-weight  : bold;
+   
+    box-shadow   : #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+    transform    : translate3d(6px, -6px, 0);
+   
+    transition-delay: 0s;
+      transition-duration: 0.4s;
+      transition-property: all;
+    transition-timing-function: line;
+  }
+ 
+  @media (max-width: 800px) {
+  .container td:nth-child(4),
+  .container th:nth-child(4) { display: none; }
+  }
+
+ /*---------------------------TABLE OF ATTRIBUTES---------------------------------------*/
+
+ /*---------------------------ID---------------------------------------*/
+
+h6 {
+	font-family    : 'Francois One', Helvetica, Arial, sans-serif;
+	font-size      : 60px;
+	text-align     : center;
+	line-height    : 1;
+	margin         : 0;
+	top            : 50%;
+  left           : 50%;
+  margin-left    : 350px;
+  margin-top     : -280px;
+	transform      : translate(-50%, -50%);
+	position       : absolute;
+	color          : $h1;
+	letter-spacing: 0rem;
+	
+	&:before {
+		content      : attr(data-heading);
+		position     : absolute;
+		overflow     : hidden;
+		color        : $yellow;
+		width        : 100%;
+		z-index      : 5;
+		text-shadow  : none;
+		left         : 0%;
+		text-align   : left;
+		animation    : flicker 3s linear infinite;
+	}
+}
+
+@keyframes flicker {
+	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+		opacity      : .99;
+		text-shadow  : -1px -1px 0 $outline, 1px -1px 0 $outline, -1px 1px 0 $outline, 1px 1px 0 $outline, 0 -2px 8px, 0 0 2px, 0 0 5px #ff7e00, 0 0 15px #ff4444, 0 0 2px #ff7e00, 0 2px 3px #000;
+	}
+	20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+		opacity      : 0.4;
+		text-shadow  : none;
+	}
+}
+
+/*---------------------------ID---------------------------------------*/
+
+
+
+/*---------------------------FLIP CARD---------------------------------------*/
+
+.FLIPCARDS { 
+  margin-left   : 150px;
+}
+
+h3 {
+  font-size     : 2.2em;
+}
+
+.flip {
+    position    : relative;
+    >.front,
+    >.back {
+        display : block;
+        transition-timing-function: cubic-bezier(.175, .885, .32, 1.275);
+        transition-duration: .5s;
+        transition-property: transform, opacity;
+    }
+    >.front {
+        transform: rotateY(0deg);
+    }
+    >.back {
+        position: absolute;
+        opacity : 0;
+        top     : 0px;
+        left    : 0px;
+        width   : 100%;
+        height  : 100%;
+        transform: rotateY(-180deg);
+    }
+    &:hover {
+        >.front {
+            transform: rotateY(180deg);
+        }
+        >.back {
+            opacity: 1;
+            transform: rotateY(0deg);
+        }
+    }
+    &.flip-vertical {
+        >.back {
+            transform: rotateX(-180deg);
+        }
+        &:hover {
+            >.front {
+                transform: rotateX(180deg);
+            }
+            >.back {
+                transform: rotateX(0deg);
+            }
+        }
+    }
+}
+
+.flip {
+    position   : relative;
+    display    : inline-block;
+    margin-right: 2px;
+    margin-bottom: 1em;
+    width      : 400px;
+    >.front,
+    >.back {
+      display  : block;
+      color    : white;
+      width    : inherit;
+      background-size: cover!important;
+      background-position: center!important;
+      height   : 220px;
+      padding  : 1em 2em;
+      background: #313131;
+      border-radius: 10px;
+      p {
+        font-size: 0.9125rem;
+        line-height: 160%;
+        color  : #999;
+      }
+    }
+}
+
+.text-shadow {
+text-shadow    : 1px 1px rgba(0, 0, 0, 0.04), 2px 2px rgba(0, 0, 0, 0.04), 3px 3px rgba(0, 0, 0, 0.04), 4px 4px rgba(0, 0, 0, 0.04), 0.125rem 0.125rem rgba(0, 0, 0, 0.04), 6px 6px rgba(0, 0, 0, 0.04), 7px 7px rgba(0, 0, 0, 0.04), 8px 8px rgba(0, 0, 0, 0.04), 9px 9px rgba(0, 0, 0, 0.04), 0.3125rem 0.3125rem rgba(0, 0, 0, 0.04), 11px 11px rgba(0, 0, 0, 0.04), 12px 12px rgba(0, 0, 0, 0.04), 13px 13px rgba(0, 0, 0, 0.04), 14px 14px rgba(0, 0, 0, 0.04), 0.625rem 0.625rem rgba(0, 0, 0, 0.04), 16px 16px rgba(0, 0, 0, 0.04), 17px 17px rgba(0, 0, 0, 0.04), 18px 18px rgba(0, 0, 0, 0.04), 19px 19px rgba(0, 0, 0, 0.04), 1.25rem 1.25rem rgba(0, 0, 0, 0.04);
+}
+
+
+/*---------------------------FLIP CARD---------------------------------------*/
+
+/*---------------------------POKEMON IMAGE--------------------------------------*/
+
+.gallery{
+  position    :relative;
+  height      :100%;
+  width       :100%;
+}
+
+.gallery:after{
+  content     :'';
+}
+
+.shadow{
+  position    : absolute;
+  top         : 500px;
+  left        : 100px;
+  width       : 500px;
+  height      : 40px;
+  border-radius: 50%;
+  background  : radial-gradient(#805d78,rgba(0,0,0,0) 70%);
+}
+
+img{
+  width       :var(--width);
+  height      :var(--height);
+}
+
+.clipped-border{
+  -webkit-clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+   clip-path  : polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+   padding    :5px;
+   background :linear-gradient(grey,lightgrey);
+   width      :var(--border-width);
+   height     :var(--border-height);
+   max-height :250px;
+   max-width  :250px;
+   height     : var(--height);
+   width      :var(--width);
+   transition :transform 0.2s;
+   position   :absolute;
+   cursor     :pointer;
+}
+
+.clipped-border:before{
+  content     :'';
+  position    :absolute;
+  opacity     :0.5;
+  width       :350px;
+  height      :70px;
+  background  :white;
+  top         :0;
+  left        :0;
+  z-index     :1;
+  transform   :rotate(45deg);
+  transition  :transform 0.5s;
+}
+
+.clipped-border:hover:before{
+  transform   : translate(-100px,400%) rotate(45deg);
+  transition  :transform 0.5s;
+}
+
+.clipped-border:nth-child(2){
+  top         :196px;
+  left        :118px;
+}
+
+.clipped-border:nth-child(3){
+  top         :0;
+  left        :235px;
+}
+
+.clipped-border:nth-child(4){
+  top         :196px;
+  left        :353px;
+}
+
+.clipped-border:nth-child(5){
+  top         :0;
+  left        :470px;
+}
+
+#clipped {
+-webkit-clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+clip-path     : polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+
+}
+
+.clipped-border:hover{
+  transform   :scale(1.2);
+  transition  :transform 0.2s;
+  z-index     :10;
+}
+
+
+@media screen and (max-width:500px){
+  .clipped-border{
+    width     :100px;
+    height    :100px;
+  }
+  
+  .clipped-border:nth-child(2){
+    top       :0;
+    left      :100px;
+  }
+  
+  .clipped-border:nth-child(3){
+    left      :200px;
+  }
+  
+  .clipped-border:nth-child(4){
+    top       :82px;
+    left      :50px;
+  }
+  
+  .clipped-border:nth-child(5){
+    top       :82px;
+    left      :150px;
+  }
+}
+
+/*---------------------------POKEMON IMAGE--------------------------------------*/
+
+
+

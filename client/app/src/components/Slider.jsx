@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./Styles/slider.css"
+import "./Styles/slider.scss"
 
 
 class Slider extends Component {
@@ -8,7 +8,7 @@ class Slider extends Component {
         return (
 <div>
     
-                <div class="container">
+                <div class="slider">
                     <div class="card">
                         <div class="face face1"> 
                             <div class="content">
