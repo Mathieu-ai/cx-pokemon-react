@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Slider from './Slider'
+
 
 
 function IdentityAttribute(props) {
@@ -31,12 +31,12 @@ function AttaqueAttribute(props) {
     let listItems = Object.keys(attaque||{})
         .map( p =>             
                 <div className='AttAttributs'>
-                    <div className="AttNom"> {p} </div>
-                    <div className="AttValeur"> {attaque[p]} </div>
+                    <div className='AttProps'> {p} </div>
+                    <div > {attaque[p]} </div>
                 </div>
         );
     return (
-      <ul>{listItems}</ul>
+      <div>{listItems}</div>
     );
 }
 
@@ -71,9 +71,10 @@ class PokedexDetails extends Component {
     }
 
     async componentDidMount() {
-        const response = await fetch('http://localhost:8080/pokemons/001')
+        const { id } = this.props.match.params;
+        const response = await fetch('http://localhost:8080/pokemons/'+id)
         const pokemon = await response.json()
-
+        
         this.setState( {pokemon} );
         this.setState( { nom : pokemon[NOM] } );
     }
@@ -85,31 +86,28 @@ class PokedexDetails extends Component {
         return (
 <div>        
 
-    <div >            
-        <h1>DETAIL PAGE OF {this.state.pokemon[NOM]}</h1>
-        <div class = "gallery">
+    <div >
+                  
+        <div class="headingWrapper">
+            <a href="" class="header header--pushDown header--shadow" title="INCROYABLE NON?">{this.state.pokemon[NOM]}</a>
+            <div className="ID">
+                <h6 data-heading="#">{this.state.pokemon.Numéro}</h6>
+            </div> {/*DIV DE POKEMON_ID*/}
+        </div>
+    </div>
+    <div class = "gallery">
             <div class="clipped-border">
                 <img src={'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/'
                     + this.state.pokemon.Numéro + '.png'} id="clipped" alt='Undefined' ></img>
             </div>
-        </div>            
-        <div class="headingWrapper">
-            <a href="" class="header header--pushDown header--shadow" title="INCROYABLE NON?">{this.state.pokemon[NOM]}</a>
-            <div className="ID">
-                <h6 data-heading="#">#{this.state.pokemon.Numéro}</h6>
-            </div> {/*DIV DE POKEMON_ID*/}
-        </div>
-    </div>
-
+        </div>  
     
 
             
     <div>
-        <div>
-
-        </div>
-    </div>
-    <table class="TABLE_PARENT_ATTRIBUTS">	        
+        <p className="Text_Attributs">Attributs</p>
+        <hr class="shine_Attributs"></hr>
+        <table class="TABLE_PARENT_ATTRIBUTS">	        
 	    <tbody>
 		    <tr>
 		    	<td className="QUESTION">NOM (FR)</td>
@@ -149,11 +147,20 @@ class PokedexDetails extends Component {
 		    </tr>
 	    </tbody>
     </table>
-
-    <Attaques list ={ this.state.pokemon.Attaques || [] }/>
-     
-
+    </div>
+    
+    <div>
+        <p className="Text_Attaques">Attaques</p>  
+        <hr class="shine_Attaques"></hr>      
+        <div className="Div_Render_Attaques">
+        <Attaques list ={ this.state.pokemon.Attaques || [] }/>
+        </div>
+    </div>     
+    <div>
+         
+    </div>   
 </div> 
+
 
     
         )       
@@ -161,3 +168,5 @@ class PokedexDetails extends Component {
 }
 
 export default PokedexDetails;
+
+// FIN DU PROJECT (っ◔◡◔)っ ❤

@@ -5,27 +5,25 @@ class PokemonCard extends Component {
     render() {
         return (
            
-            <div className="Card">
-                 <Link to="/details">
+            <div className="Card" >
+                 <Link to={`/pokemons/${this.props.id}` } style={{ textDecoration: 'none' }}>
                     <img className='img2' src= {'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/' + this.props.image + '.png'} alt='Undefined' />                     
                     <div >
                         <h2>{this.props.name}</h2>
                     </div>
                     <div className="POK_ID">
-                    <p className='caption'> <small>#{this.props.id}</small> </p>
-                    </div>
-                    <div className="POK_TYPE">
-                        <h5>{this.props.type}</h5>
+                        #{this.props.id}
                     </div>
                     
-                
+                    <div className = 'Pok_Type'>
+                        <small class>{this.props.type}</small>
+                    </div>
                 </Link>
-            </div>
-           
-            
-        )
-        
+            </div>  
+        ) 
     }
 }
 
 export default PokemonCard
+
+// FIN DU PROJECT ≧◔◡◔≦

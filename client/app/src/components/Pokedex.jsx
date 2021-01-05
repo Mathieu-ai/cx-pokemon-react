@@ -27,7 +27,7 @@ class Pokedex extends Component {
 
     render() {
         return (
-<div>
+<div >
 
     <div className="SEARCH-PARENT">
         <div className="SEARCH_CHILD">
@@ -57,3 +57,5 @@ class Pokedex extends Component {
 }
 
 export default Pokedex;
+
+// FIN DU PROJECT (👍≖‿‿≖)👍 👍(≖‿‿≖👍)

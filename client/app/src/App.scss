@@ -139,6 +139,35 @@
     			 1.5px -1.5px 0 $color;
 }
 
+// Default options
+$defaultDuration: .3s;
+$primaryColour: #ececec;
+$secondaryColour: #666;
+$shadowColour: rgba(0, 0, 0, .6);
+
+
+
+// As is often the case, some devices/browsers need additional code to get CSS to work
+// in the most desired way. These mixins are used to quickly drop in hacks for each element
+@mixin hideTapHighlightColor() {
+	//Prevent highlight colour when element is tapped
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+@mixin hardwareAccel() {
+	//Improve performance on mobile/tablet devices
+	transform: translateZ(0);
+}
+
+@mixin improveAntiAlias() {
+	//Improve aliasing on mobile/tablet devices
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+$tipWidth: 10px;  //the width of the speech bubble tip
+$tipHeight: 10px; //the height of the speech bubble tip
+$tipColour: $primaryColour;
+
 /*---------------------------FUNCTION SCSS (Version 4.14.1)---------------------------------------*/
 
 /*---------------------------COLORS--------------------------------------*/
@@ -154,6 +183,12 @@ $blue              : #98b5cc;
 $yellow            : #ffcc00;
 $outline           : rgba(#fff, .4);
 $shadow            : rgba($yellow, .5);
+$red               : #f3576c;
+$purple            : #3e2e6a;
+$blue              : #130b52;
+$bg                : #fbe6d3;
+$ColorTextProps	   :  rgba(253, 205, 205, 0.945); 
+$BlueTitles	       : rgb(92, 141, 163);     
 
 /*---------------------------COLORS--------------------------------------*/
 
@@ -167,101 +202,127 @@ $shadow            : rgba($yellow, .5);
 /*---------------------------BODY---------------------------------------*/
 
 body{
-  background: linear-gradient(146deg, rgb(251, 221, 185) 0%, rgb(140, 167, 255) 100%);
+  background      : rgb(214, 214, 214);
 }
 
 /*---------------------------BODY---------------------------------------*/
+
+/*---------------------------SCROLLBAR---------------------------------------*/
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(214, 214, 214);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(88, 88, 88);
+  border-radius: 20px;
+  border: 3px solid rgb(214, 214, 214);
+}
+
+/*---------------------------SCROLLBAR---------------------------------------*/
 /*---------------------------POKEDEX--------------------------------------*/
 
 .Pokedex {
-  padding : 200px 50px 100px 100px;
-  display: flex;
-	flex-wrap: wrap;
-  justify-content: center;
-	height: 100%;
-  align-items: center;
+  padding         : 200px 50px 100px 100px;
+  display         : flex;
+	flex-wrap       : wrap;
+  justify-content : center;
+	height          : 100%;
+  align-items     : center;
   text-decoration : none ;
 }	
 
 .Card {
-  position: relative;
-	height: 300px;
-	width: 185px;
-	margin: 20px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-  border-radius: 20px;
-  background: rgb(188,232,255);
-  background: linear-gradient(176deg, rgba(188,232,255,1) 0%, rgba(250,255,188,1) 100%);
+  border          : 1px solid black;
+  position        : relative;
+	height          : 300px;
+	width           : 185px;
+	margin          : 20px;
+	display         : flex;
+	flex-direction  : column;
+	justify-content : center;
+	align-items     : center;
+  border-radius   : 20px;
+  background      : rgb(188,232,255);
+  background      : linear-gradient(176deg, rgba(188,232,255,1) 0%, rgba(250,255,188,1) 100%);
   text-decoration : none ;
 }
 
-.Card:hover {
- 
-  box-shadow   : #000000 -1px 1px, #000000 -2px 2px, #000000 -3px 3px, #000000 -4px 4px, #000000 -5px 5px, #000000 -6px 6px;
-  transform    : translate3d(6px, -6px, 0);
-  transition-delay: 0s;
-    transition-duration: 0.4s;
-    transition-property: all;
-  transition-timing-function: line;
-  text-decoration : none ;
+.Card{
+	display         : inline-block;
+	transition-duration: $defaultDuration;
+	transition-property: transform;
+
+	@include hideTapHighlightColor();
+	@include hardwareAccel();
+	@include improveAntiAlias();
+	
+	&:hover {	
+		transform     : scale(1.1) rotate(4deg);
+	}
 }
+
+
 
 h2 {
-  display: flex;
-  justify-content: center;
-  font-family: 'Work Sans', sans-serif;
-  font-size: 14px;
-  color: #464646;
-  margin-bottom: 1rem;
+  padding-left    : 15px;
+  font-family     : 'Work Sans', sans-serif;
+  font-size       : 14px;
+  color           : #464646;
+  margin-bottom   : 1rem;
+  font-weight     : bold;
+  font-size       : 1.5rem;
+  text-decoration : none ;
+  outline         : none;
+}
+
+.POK_ID {
+  font-family     : 'Work Sans', sans-serif;
   font-weight: bold;
-  font-size: 1.5rem;
-  text-decoration : none ;
-  outline: none;
-}
-
-.POK_ID p small {
-  
-  margin: auto;
-  font-family: 'Francois One', Helvetica, Arial, sans-serif;
-  background-color: #feffb7;
-  color: rgb(0, 0, 0);
-  padding: 3px 1rem;
-  border-radius: 30px;
-  font-size: 12px;
+  color : rgb(2, 0, 88);
+  margin-bottom: 10px;
+  background-color: rgb(178, 246, 176);
   text-align: center;
-  text-transform: uppercase;
-  text-decoration : none ;
-  outline: none;
+  border-radius : 30px;
+  width: 60px;
+  margin-left : 15px;
+  text-decoration: none;
 }
 
+small {
+  width: 100%;
+  margin-left : -12px;
+}
 
+.Pok_Type {
+  font-family     : 'Work Sans', sans-serif;
+  font-weight: bold;
+  padding-left: 10px;  
+  color :  rgb(2, 0, 88);
+  margin-bottom: 10px;
+  background-color: rgb(255, 216, 108);
+  text-align: center;
+  border-radius : 30px;
+  width: 60px;
+  margin-left : 15px;
+  text-decoration: none;
 
-h5 {
-  left: 100%;
-  background-color: #607D8B;
-  color: white;
-  padding: 3px 1rem;
-  border-radius: 3px;
-  font-size: 12px;
-  margin-right: 70px;
-  text-transform: uppercase;
-  text-decoration : none ;
-  outline: none;
+}
   
-}
 
 
 .img2  {
   background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  text-align: center;
-  display: inline-block;
-  margin-top: 10px;
+  border-radius   : 50%;
+  width           : 120px;
+  height          : 120px;
+  margin-left     : 25px;
+  display         : inline-block;
+  margin-top      : 10px;
 }
 /*---------------------------POKEDEX--------------------------------------*/
 
@@ -272,125 +333,125 @@ h5 {
 
 
 input{
-  box-sizing: border-box;
+  box-sizing      : border-box;
 }
 
 
 .SEARCH_BOX {
   
-  position: absolute;
-  margin: auto;
-  top: -700px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 300px;
-  height: 100px;
+  position        : absolute;
+  margin          : auto;
+  top             : -700px;
+  left            : 0;
+  right           : 0;
+  bottom          : 0;
+  width           : 300px;
+  height          : 100px;
   .search {
-    position: absolute;
-    margin: auto;
-    top: 0px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 80px;
-    height: 80px;
-    background: rgb(0, 0, 0);
-    border-radius: 50%;
-    transition: all 1s;
+    position      : absolute;
+    margin        : auto;
+    top           : 0px;
+    right         : 0;
+    bottom        : 0;
+    left          : 0;
+    width         : 80px;
+    height        : 80px;
+    background    : rgb(0, 0, 0);
+    border-radius : 50%;
+    transition    : all 1s;
     
     box-shadow: 0 0 25px 0 rgba(255, 255, 255, 0.4);
     // box-shadow: 0 0 25px 0 crimson;
     &:hover {
-      cursor: pointer;
+      cursor      : pointer;
     }
     &::before {
-      content: "";
-      position: absolute;
-      margin: auto;
-      top: 22px;
-      right: 0;
-      bottom: 0;
-      left: 22px;
-      width: 12px;
-      height: 2px;
-      background: rgb(255, 255, 255);
-      transform: rotate(45deg);
-      transition: all .5s;
+      content     : "";
+      position    : absolute;
+      margin      : auto;
+      top         : 22px;
+      right       : 0;
+      bottom      : 0;
+      left        : 22px;
+      width       : 12px;
+      height      : 2px;
+      background  : rgb(255, 255, 255);
+      transform   : rotate(45deg);
+      transition  : all .5s;
     }
     &::after {
-      content: "";
-      position: absolute;
-      margin: auto;
-      top: -5px;
-      right: 0;
-      bottom: 0;
-      left: -5px;
-      width: 25px;
-      height: 25px;
+      content     : "";
+      position    : absolute;
+      margin      : auto;
+      top         : -5px;
+      right       : 0;
+      bottom      : 0;
+      left        : -5px;
+      width       : 25px;
+      height      : 25px;
       border-radius: 50%;
-      border: 2px solid white;
-      transition: all .5s;
+      border      : 2px solid white;
+      transition  : all .5s;
     }
   }
   input {
-    font-family: 'Inconsolata', monospace;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 50px;
-    height: 50px;
-    outline: none;
-    border: none;
+    font-family   : 'Inconsolata', monospace;
+    position      : absolute;
+    margin        : auto;
+    top           : 0;
+    right         : 0;
+    bottom        : 0;
+    left          : 0;
+    width         : 50px;
+    height        : 50px;
+    outline       : none;
+    border        : none;
     // border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgb(0, 0, 0);
-    color: white;
-    text-shadow: 0 0 10px rgb(255, 255, 255);
-    padding: 0 80px 0 20px;
-    border-radius: 30px;
-    box-shadow: 0 0 25px 0 rgb(0, 0, 0),
-                0 20px 25px 0 rgba(255, 255, 255, 0.2);
+    background    : rgb(0, 0, 0);
+    color         : white;
+    text-shadow   : 0 0 10px rgb(255, 255, 255);
+    padding       : 0 80px 0 20px;
+    border-radius : 30px;
+    box-shadow    : 0 0 25px 0 rgb(0, 0, 0),
+                    0 20px 25px 0 rgba(255, 255, 255, 0.2);
     // box-shadow: inset 0 0 25px 0 rgba(0, 0, 0, 0.5);
-    transition: all 1s;
-    opacity: 0;
-    z-index: 5;
-    font-weight: bolder;
+    transition    : all 1s;
+    opacity       : 0;
+    z-index       : 5;
+    font-weight   : bolder;
     letter-spacing: 0.1em;
     &:hover {
-      cursor: pointer;
+      cursor      : pointer;
     }
     &:focus {
-      width: 300px;
-      opacity: 1;
-      cursor: text;
+      width       : 300px;
+      opacity     : 1;
+      cursor      : default;
     }
     &:focus ~ .search {
-      right: -250px;
-      background: #151515;
-      z-index: 6;
+      right       : -250px;
+      background  : #151515;
+      z-index     : 6;
       &::before {
-        top: 0;
-        left: 0;
-        width: 25px;
+        top       : 0;
+        left      : 0;
+        width     : 25px;
       }
       &::after {
-        top: 0;
-        left: 0;
-        width: 25px;
-        height: 2px;
-        border: none;
+        top       : 0;
+        left      : 0;
+        width     : 25px;
+        height    : 2px;
+        border    : none;
         background: white;
         border-radius: 0%;
-        transform: rotate(-45deg);
+        transform : rotate(-45deg);
       }
     }
     &::placeholder {
-      color: white;
-      opacity: 0.5;
-      font-weight: bolder;
+      color       : white;
+      opacity     : 0.5;
+      font-weight : bolder;
     }
   }
 }
@@ -399,184 +460,151 @@ input{
 
 /*---------------------------POKEMON IMAGE DETAILS--------------------------------------*/
 
-
-
-.gallery{
-  position    :relative;
-  height      :100%;
-  width       :100%;
-}
-
-
-
 .shadow{
-  position    : absolute;
-  top         : 500px;
-  left        : 100px;
-  width       : 500px;
-  height      : 40px;
-  border-radius: 50%;
-  background  : radial-gradient(#805d78,rgba(0,0,0,0) 70%);
+  position        : absolute;
+  top             : 500px;
+  left            : 100px;
+  width           : 500px;
+  height          : 40px;
+  border-radius   : 50%;
+  background      : radial-gradient(#805d78,rgba(0,0,0,0) 70%);
 }
 
 img{
-  width       :120px;
-  height      :120px;
+  width           :120px;
+  height          :120px;
 }
 
 .clipped-border{
   -webkit-clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
-   clip-path  : polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
-   padding    :5px;
-   background :linear-gradient(rgb(255, 208, 231),rgb(182, 226, 255));
-   width      :var(--border-width);
-   height     :var(--border-height);
-   max-height :250px;
-   max-width  :250px;
-   height     : 120px;
-   width      :120px;
-   transition :transform 0.2s;
-   position   :absolute;
-   cursor     :pointer;
-   margin-top: 55px;
-   margin-left : 450px;
+   clip-path      : polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+   padding        :5px;
+   background     :linear-gradient(rgb(213, 245, 255),rgb(255, 234, 201));
+   width          :var(--border-width);
+   height         :var(--border-height);
+   max-height     :250px;
+   max-width      :250px;
+   height         : var(--height);
+   width          :var(--width);
+   transition     :transform 0.2s;
+   position       :absolute;
+   cursor         :pointer;
+   margin-top     : -140px;
+   margin-left    : 450px;
 }
 
+
+
 .clipped-border:before{
-  content     :'';
-  position    :relative;
-  opacity     :0.5;
-  width       :350px;
-  height      :70px;
-  background  :white;
-  top         :0;
-  left        :0;
-  z-index     :1;
-  transform   :rotate(45deg);
-  transition  :transform 0.5s;
+  content         :'';
+  position        :absolute;
+  opacity         :0.5;
+  width           :350px;
+  height          :70px;
+  background      :white;
+  top             :0;
+  left            :0;
+  z-index         :1;
+  transform       :rotate(45deg);
+  transition      :transform 0.5s;
 }
 
 .clipped-border:hover:before{
-  transform   : translate(-100px,400%) rotate(45deg);
-  transition  :transform 0.5s;
+  transform       : translate(-100px,400%) rotate(45deg);
+  transition      :transform 0.5s;
 }
 
 .clipped-border:nth-child(2){
-  top         :196px;
-  left        :118px;
+  top             :196px;
+  left            :118px;
 }
 
 .clipped-border:nth-child(3){
-  top         :0;
-  left        :235px;
+  top             :0;
+  left            :235px;
 }
 
 .clipped-border:nth-child(4){
-  top         :196px;
-  left        :353px;
+  top             :196px;
+  left            :353px;
 }
 
 .clipped-border:nth-child(5){
-  top         :0;
-  left        :470px;
+  top             :0;
+  left            :470px;
 }
 
 #clipped {
--webkit-clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
-clip-path     : polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+-webkit-clip-path : polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+clip-path         : polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
 
 }
 
 .clipped-border:hover{
-  transform   :scale(1.2);
-  transition  :transform 0.2s;
-  z-index     :10;
+  transform       :scale(1.2);
+  transition      :transform 0.2s;
+  z-index         :10;
 }
 
 
 @media screen and (max-width:500px){
   .clipped-border{
-    width     :100px;
-    height    :100px;
+    width         :100px;
+    height        :100px;
   }
   
   .clipped-border:nth-child(2){
-    top       :0;
-    left      :100px;
+    top           :0;
+    left          :100px;
   }
   
   .clipped-border:nth-child(3){
-    left      :200px;
+    left          :200px;
   }
   
   .clipped-border:nth-child(4){
-    top       :82px;
-    left      :50px;
+    top           :82px;
+    left          :50px;
   }
   
   .clipped-border:nth-child(5){
-    top       :82px;
-    left      :150px;
+    top           :82px;
+    left          :150px;
   }
 }
+
 
 /*---------------------------POKEMON IMAGE DETAILS--------------------------------------*/
 
 /*---------------------------HOVER TEXTS DETAILS--------------------------------------*/
-
-h1 {
-	font-family        : 'PT Sans', sans-serif;
-	text-transform     : uppercase;
-}
-h1 {
-  font-size          : 2.4em;
-  background-color   : rgba(41, 41, 41, 1);
-  text-align         : center;
-  padding            : 20px;
-  margin             : 0;
-  color              : #fff;
-  width : 1850px;
-  
-  a {
-    display          : block;
-    margin-top       : 10px;
-    text-transform   : none;
-    color            : #aaa;
-    font-size        : 16px;
-    text-decoration  : none;
-  }
-}
-
 // Outer heading wrapper (for descriptions, not for the actual effects)
 .headingOuter {
-	background         : #f1f1f1;
-	text-align         : center;
-	margin-top         : 30px;
-	border-top         : 1px solid #333;
-	border-bottom      : 1px solid #333;
+	text-align      : center;
+	margin-top      : 30px;
+	border-top      : 1px solid rgb(255, 0, 0);
+	border-bottom   : 1px solid #333;
 
 	&:first-child {
-		margin-top       : 0;
+		margin-top    : 0;
   }
   
   h1 + & {
-    margin-top       : 10px;
+    margin-top    : 10px;
   }
 }
 .headingWrapper {
-	text-align         : center;
-	background-color   : #fff;
-	padding            : 10px;
+	text-align      : center;
+	padding         : 10px;
 }
 
 // default header class 
 .header {
-	display            : inline-block;
-	text-align         : center;
-	font-family        : 'Francois One', Helvetica, Arial, sans-serif;
-	font-size          : 96px;
-	color              : $offWhite;
-	text-decoration    : none;
+	display         : inline-block;
+	text-align      : center;
+	font-family     : 'Francois One', Helvetica, Arial, sans-serif;
+	font-size       : 96px;
+	color           : $BlueTitles;
+	text-decoration : none;
 
 	@include outline($grayLight);
 
@@ -585,20 +613,20 @@ h1 {
 
 // effect for pushing the text down onto the page
  .header--pushDown {
-		@include shade(text, $pinkDark, #fff, 10, 135deg, true);
+		@include shade(text, $BlueTitles, $BlueTitles, 10, 135deg, true);
 
 		&:hover {
-			@include outline($pinkGrayed);
+			@include outline($BlueTitles);
 		}
 	}
 
   	
 	//push down text
 	 .header--pushDown {
-		@include shade(text, $pinkGrayed, rgb(0, 0, 0), 10, 135deg, true);
+		@include shade(text, rgba(184, 184, 184, 0.459), rgba(224, 224, 224, 0.062), 10, 135deg, true);
 
 		&:hover {
-			@include outline($pinkPastel);
+			@include outline(rgba(184, 184, 184, 0.459));
 		}
 	}
 
@@ -607,124 +635,208 @@ h1 {
 /*---------------------------ID---------------------------------------*/
 
 h6 {
-  
-	font-family    : 'Francois One', Helvetica, Arial, sans-serif;
-	font-size      : 60px;
-	text-align     : center;
-	line-height    : 1;
-	margin         : 0;
-	top            : 50%;
-  left           : 50%;
-  cursor         : default;
-	transform      : translate(-50%, -50%);
-	position       : absolute;
-	color          : $h1;
-	letter-spacing : 0rem;
+	font-family     : 'Francois One', Helvetica, Arial, sans-serif;
+	font-size       : 60px;
+	text-align      : center;
+	line-height     : 1;
+	margin          : 0;
+	top             : 90px;
+  left            : 73%;
+  cursor          : default;
+	transform       : translate(-50%, -50%);
+	position        : absolute;
+	color           : $h1;
+  letter-spacing  : 0rem;
+  border          : none;
+	outline         : none;
+	padding         : 10px 20px;
+	border-radius   : 50px;
+	color           : $BlueTitles	;
+	background      : #fff;
+	box-shadow      : 0 3px 20px 0 #0000003b;
 	
 	&:before {
-		content      : attr(data-heading);
-		position     : relative;
-		overflow     : hidden;
-		color        : $yellow;
-		width        : 100%;
-		z-index      : 5;
-		text-shadow  : none;
-		left         : 0%;
-		text-align   : left;
-		animation    : flicker 3s linear infinite;
+		content       : attr(data-heading);
+		position      : relative;
+		overflow      : hidden;
+		color         : rgba(45, 96, 131, 0.473);
+		width         : 100%;
+		z-index       : 5;
+		text-shadow   : none;
+		left          : 0%;
+		text-align    : left;
+		animation     : flicker 3s linear infinite;
 	}
 }
 
 @keyframes flicker {
 	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
-		opacity      : .99;
-		text-shadow  : -1px -1px 0 $outline, 1px -1px 0 $outline, -1px 1px 0 $outline, 1px 1px 0 $outline, 0 -2px 8px, 0 0 2px, 0 0 5px #ff7e00, 0 0 15px #ff4444, 0 0 2px #ff7e00, 0 2px 3px #000;
+		opacity       : .99;
+		text-shadow   : -1px -1px 0 $outline, 1px -1px 0 $outline, -1px 1px 0 $outline, 1px 1px 0 $outline, 0 -2px 8px, 0 0 2px, 0 0 5px #ffffff, 0 0 15px #ffffff, 0 0 2px #000000, 0 2px 3px rgb(0, 0, 0);
 	}
 	20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
-		opacity      : 0.4;
-		text-shadow  : none;
+		opacity       : 0.4;
+		text-shadow   : none;
 	}
 }
 
 /*---------------------------ID---------------------------------------*/
 
+/*---------------------------HR (LINE BENEATH ATTRIBUTE & ATTAQUES TEXT---------------------------------------*/
+
+hr {
+  border          : 0;
+  margin          : 1.35em auto;
+  max-width       : 100%;
+  background-position: 50%;
+  box-sizing      : border-box;
+}
+
+.shine_Attributs {
+  height          : 20px;
+  width           : 70%;
+  background-image: radial-gradient(
+    farthest-side at 50% -50%,
+    hsla(0, 0%, 0%, 0.5),
+    hsla(0, 0%, 0%, 0));
+  position        : relative; 
+  top             : -100px;
+  left            : -10px;
+}
+
+.shine_Attributs::before {
+  height          : 1px;
+  position        : absolute;
+  top             : -1px;
+  left            : 0;
+  right           : 0;
+  background-image: linear-gradient(
+    90deg,
+    hsla(0, 0%, 0%, 0),
+    hsla(0, 0%, 0%, 0.75) 50%,
+    hsla(0, 0%, 0%, 0));
+}
+
+.shine_Attaques {
+  height          : 20px;
+  width           : 70%;
+  background-image: radial-gradient(
+    farthest-side at 50% -50%,
+    hsla(0, 0%, 0%, 0.5),
+    hsla(0, 0%, 0%, 0));
+  position        : relative; 
+  top             : -240px;
+  left            : -10px;
+}
+
+.shine_Attaques::before {
+  height          : 1px;
+  position        : absolute;
+  top             : -1px;
+  left            : 0;
+  right           : 0;
+  background-image: linear-gradient(
+    90deg,
+    hsla(0, 0%, 0%, 0),
+    hsla(0, 0%, 0%, 0.75) 50%,
+    hsla(0, 0%, 0%, 0));
+}
+
+/*---------------------------HR (LINE BENEATH ATTRIBUTE & ATTAQUES TEXT---------------------------------------*/
+
 /*---------------------------TABLE OF ATTRIBUTES---------------------------------------*/
+
+.Text_Attributs, .Text_Attributs:after {
+  font-weight     : 900;
+  color           : $BlueTitles	;
+  white-space     : nowrap;
+  display         : inline-block;
+  position        : relative;
+  letter-spacing  : .1em;
+  padding         : .2em 0 .25em 0;
+  left            : 435px;
+}
+
+.Text_Attributs {
+  font-size       : 4em;
+  text-shadow     : .04em .04em 0 rgba(184, 184, 184, 0.459);
+  left            : 359px;
+}
 
 
 
   h4 {
-    font-size      : 2em; 
-    font-weight    : 300;
-    line-height    : 1em;
-    text-align     : center;
-    color          : #4DC3FA;
+    font-size     : 2em; 
+    font-weight   : 300;
+    line-height   : 1em;
+    text-align    : center;
+    color         : #ffffff;
     
   
   }
  
   .blue { 
-    color          : #185875; 
+    color         : #185875; 
   }
   .yellow { 
-    color          : #FFF842; 
+    color         : #FFF842; 
   }
  
   .TABLE_PARENT_ATTRIBUTS th h4 {
-    font-weight    : bold;
-    font-size      : 2em;
-    text-align     : left;
-    color          : #185875;
+    font-weight   : bold;
+    font-size     : 2em;
+    text-align    : left;
+    color         : #ffffff;
   }
  
   .TABLE_PARENT_ATTRIBUTS td {
-    font-weight    : normal;
-    font-size      : 1em;
+    font-weight   : normal;
+    font-size     : 1em;
     -webkit-box-shadow: 0 2px 2px -2px #0E1119;
     -moz-box-shadow: 0 2px 2px -2px #0E1119;
-    box-shadow     : 0 2px 2px -2px #0E1119;
+    box-shadow    : 0 2px 2px -2px #0E1119;
   }
  
   .TABLE_PARENT_ATTRIBUTS {
    
-    overflow       : hidden;
-    width          : 50%;
-    margin         : 0 auto;
-    display        : table;
-    padding        : 0 0 8em 0;
+    overflow      : hidden;
+    width         : 62%;
+    margin        : 0 auto;
+    display       : table;
+    padding       : 0 0 8em 0;
+    margin-top    : -80px;
     
   }
  
   .TABLE_PARENT_ATTRIBUTS td, .TABLE_PARENT_ATTRIBUTS th {
       padding-bottom:2%;
-      padding-top  : 2%;
-    padding-left   : 2%;  
+      padding-top : 2%;
+    padding-left  : 2%;  
   }
  
   /* Background-color of the odd rows */
   .TABLE_PARENT_ATTRIBUTS tr:nth-child(odd) {
-      background-color: #323C50;
+      background-color: #535c70;
   }
  
   /* Background-color of the even rows */
   .TABLE_PARENT_ATTRIBUTS tr:nth-child(even) {
-      background-color: #2C3446;
-  }
- 
-  .TABLE_PARENT_ATTRIBUTS th {
-      background-color: #1F2739;
+      background-color: #454d5f;
   }
  
   .TABLE_PARENT_ATTRIBUTS td.QUESTION{ 
-    color        : #a4fcff; 
-    font-size    : 20px;
+    font-family: 'Staatliches', cursive;
+    font-weight: bold;
+    color         : $ColorTextProps; 
+    font-size     : 20px;
     text-align: center;
   
   }
 
   .TABLE_PARENT_ATTRIBUTS td.ANSWER{ 
-    color        : #ffffff; 
-    font-size    : 20px;
-    text-align   : center;
+    color         : #ffffff; 
+    font-size     : 20px;
+    text-align    : center;
   
   }
 
@@ -735,13 +847,16 @@ h6 {
             box-shadow: 0 6px 6px -6px #0E1119;
   }
  
+  $Cyan : #97afb9;
+  $CyanDarker : #70828a ;
+
   .TABLE_PARENT_ATTRIBUTS td:hover {
-    background-color: #FFF842;
-    color        : #403E10;
-    font-weight  : bold;
+    background-color: #97afb9;
+    color         : #403E10;
+    font-weight   : bold;
    
-    box-shadow   : #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
-    transform    : translate3d(6px, -6px, 0);
+    box-shadow    :  $CyanDarker  -1px 1px,  $CyanDarker  -2px 2px,  $CyanDarker  -3px 3px,  $CyanDarker  -4px 4px,  $CyanDarker  -5px 5px,  $CyanDarker  -6px 6px;
+    transform     : translate3d(6px, -6px, 0);
    
     transition-delay: 0s;
       transition-duration: 0.4s;
@@ -757,33 +872,99 @@ h6 {
  /*---------------------------TABLE OF ATTRIBUTES---------------------------------------*/
 
 /*---------------------------ATTAQUES PROPRETIES--------------------------------------*/
- .AttAttributs{
-   columns: 2;
-   width : 250px; 
+
+.AttAttributs{
+  color           : white;
+   columns        : 2;
+   width          : 250px; 
+   border-bottom  : 1px solid black;
+   padding-left   : 20px;
+   margin-top     : 10px;
+   height         : 30px;
    
  }
 
+.AttProps {
+  font-family: 'Staatliches', cursive;
+  color: $ColorTextProps;
+  
+}
+
 .AttAttaques {
-  display : flex;
-  flex-wrap: wrap;
-  width          : 70%;
-  margin         : 0 auto;
-  padding        : 0 0 8em 0;
-  margin-top     : 10px;
-  align-content : center;
+  display         : flex;
+  flex-wrap       : wrap;
+  width           : 50%;
+  margin          : 0 auto;
+  margin-top      : -220px;
+  margin-left     : 325px;
+  
   
 }
 
 .AttAttaque {
-  background-color: pink;
-  border: 1px solid black;
-  margin: 10px;
-  border-radius : 30px;
+  font-family     : 'PT Sans', sans-serif;
+  text-transform  : uppercase;
+  background      : #535c70;
+  margin          : 10px;
+  box-shadow      : 5px 5px 10px rgba(0, 0, 0, 0.246);
+}
+
+.Text_Attaques, .Text_Attaques:after {
+  font-weight     : 900;
+  color           : $BlueTitles;
+  white-space     : nowrap;
+  display         : inline-block;
+  position        : relative;
+  letter-spacing  : .1em;
+  padding         : .2em 0 .25em 0;
+  left            : 435px;
+  top             : -150px;
+}
+
+.Text_Attaques {
+  font-size       : 4em;
+  text-shadow     : .04em .04em 0 rgba(184, 184, 184, 0.459);
+  left            : 359px;
+}
+
+.AttAttaque {
+	display         : inline-block;
+	transition-duration: $defaultDuration;
+	transition-property: box-shadow;
+
+	@include hideTapHighlightColor();
+	@include hardwareAccel();
+	@include improveAntiAlias();
+
+  display         : inline-block;
+	position        : relative;
+	transition-duration: $defaultDuration;
+	transition-property: transform;
+
+	@include hideTapHighlightColor();
+	@include hardwareAccel();
+	@include improveAntiAlias();
+
+	&:hover {
+		transform     : translateY(-5px) translateZ(0);
+	}
+
+	&:hover         :before {
+		bottom        : -($tipHeight);
+	}
 }
 
 /*---------------------------ATTAQUES PROPRETIES--------------------------------------*/
 
 
+/*---------------------------FIN DU SCSS--------------------------------------
 
+( ͡👁️ ͜ʖ ͡👁️)    ( ͡👁️ ⏏ ͡👁️)    
+
+(👍❛︣ ͜ʖ ❛᷅)👍   (>‿◠)✌
+
+(─‿‿─)    （っ＾▿＾）
+
+----------------------------------------------------------------------------*/
 
 

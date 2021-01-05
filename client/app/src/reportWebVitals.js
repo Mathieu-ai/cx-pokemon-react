@@ -11,3 +11,5 @@ const reportWebVitals = onPerfEntry => {
 };
 
 export default reportWebVitals;
+
+/* FIN DU PROJECT ᕙ(^▿^-ᕙ) */
