@@ -25,29 +25,31 @@ function IdentityAttribute(props) {
    
 }
 
+
 function AttaqueAttribute(props) {
     const attaque = props.data;
     let listItems = Object.keys(attaque||{})
-        .map( p =>  
-            <div className='ATTAQUES'>
-                <span className="pAtt"> {p} </span>
-                <span className="AttaqueP"> {attaque[p]} </span>
-            </div>
+        .map( p =>             
+                <div className='AttAttributs'>
+                    <div className="AttNom"> {p} </div>
+                    <div className="AttValeur"> {attaque[p]} </div>
+                </div>
         );
     return (
       <ul>{listItems}</ul>
     );
 }
-// 
+
 function Attaques( { list } ) {
     return (
-        <div>
-          {list.map( (attaque) => (
-            <div className="AttTemp">
-                <AttaqueAttribute data={attaque}/>
+            <div className="AttAttaques">
+                {list.map( (attaque) => (
+                    <div className="AttAttaque">
+                        <AttaqueAttribute data={attaque}/>
+                    </div>
+                ))}
             </div>
-          ))}
-        </div>
+        
       );
 }
 
@@ -81,167 +83,78 @@ class PokedexDetails extends Component {
 //<AttaquesAttribute data={this.state.pokemon.attaques && this.state.pokemon.attaques[0]} 2/>
     render() {
         return (
-<div>            
+<div>        
 
-<div>            
-<h1>DETAIL PAGE OF {this.state.pokemon[NOM]} <a target="blank">Design by Math1eu</a></h1>
-<div class="headingWrapper">
-  <a href="" class="header header--pushDown header--shadow" title="INCROYABLE NON?">{this.state.pokemon[NOM]}</a>
-</div>
-<div className="ID">
-<h6 data-heading="#">#{this.state.pokemon.Numéro}</h6>
-</div> {/*DIV DE POKEMON_ID*/}
-</div> {/*DIV DE POKEMON_NON*/}
-
-<div class="gallery2">
-<div class = "gallery">
-  <div class="clipped-border">
-    <img src={'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/'
-                + this.state.pokemon.Numéro + '.png'} id="clipped" alt='Undefined' ></img>
-  </div>
-</div>
-</div>
-
-<table class="container">
-	<thead>
-	</thead>
-	<tbody>
-		<tr>
-			<td className="QUESTION">NOM (FR)</td>
-			<td className="ANSWER">{this.state.pokemon[NOM]}</td>
-			<td className="QUESTION">Éspèce</td>
-			<td className="ANSWER">{this.state.pokemon[espece]}</td>
-		</tr>
-		<tr>
-			<td className="QUESTION">NOM (EN)</td>
-			<td className="ANSWER">{this.state.pokemon[NOM2]}</td>
-			<td className="QUESTION">Taille</td>
-			<td className="ANSWER">{this.state.pokemon[taille]}</td>
-		</tr>
-		<tr>
-			<td className="QUESTION">NOM (JA)</td>
-			<td className="ANSWER">{this.state.pokemon[NOM3]}</td>
-			<td className="QUESTION">Poids</td>
-			<td className="ANSWER">{this.state.pokemon[poids]}</td>
-		</tr>
-    <tr>
-			<td className="QUESTION">NOM (TM)</td>
-			<td className="ANSWER">{this.state.pokemon[NOM4]}</td>
-			<td className="QUESTION">Type</td>
-			<td className="ANSWER">{this.state.pokemon[type]}</td>
-		</tr>
-    <tr>
-			<td className="QUESTION">NOM (DE)</td>
-			<td className="ANSWER">{this.state.pokemon[NOM5]}</td>
-			<td className="QUESTION">Couleur</td>
-			<td className="ANSWER">{this.state.pokemon[couleur]}</td>
-		</tr>
-    <tr>
-			<td> </td>
-			<td> </td>
-			<td className="QUESTION">Forme</td>
-			<td className="ANSWER">{this.state.pokemon[forme]}</td>
-		</tr>
-	</tbody>
-</table>
-
-
-<div className="FLIPCARDS">
-
-<div class="flip">
-    <div class="front" >
-       <h3 class="text-shadow">ATTAQUES</h3>
-    </div>
-    <div class="back">
-       <h2>Angular</h2>
-       <p><Attaques list ={ this.state.pokemon.Attaques|| [] }/></p>
-    </div>
-</div>
-<div class="flip">
-    <div class="front" >
-       <h3 class="text-shadow">ATTAQUES</h3>
-    </div>
-    <div class="back">
-       <h2>Angular</h2>
-       <p>Good tools make application development quicker and easier to maintain than if you did everyth1ng by hand..</p>
-    </div>
-</div>
-<div class="flip">
-    <div class="front" >
-       <h3 class="text-shadow">ATTAQUES</h3>
-    </div>
-    <div class="back">
-       <h2>Angular</h2>
-       <p>Good tools make application development quicker and easier to maintain than if you did everyth1ng by hand..</p>
-    </div>
-</div>
-
-
-<div class="flip flip-vertical">
-    <div class="front" >
-       <h3 class="text-shadow">ATTAQUES</h3>
-    </div>
-    <div class="back">
-       <h2>Angular</h2>
-       <p>Good tools make application development quicker and easier to maintain than if you did everyth1ng by hand..</p>
-    </div>
-</div>
-<div class="flip flip-vertical">
-    <div class="front" >
-       <h3 class="text-shadow">ATTAQUES</h3>
-    </div>
-    <div class="back">
-       <h2>Angular</h2>
-       <p>Good tools make application development quicker and easier to maintain than if you did everyth1ng by hand..</p>
-    </div>
-</div>
-<div class="flip flip-vertical">
-    <div class="front" >
-       <h3 class="text-shadow">ATTAQUES</h3>
-    </div>
-    <div class="back">
-       <h2>Angular</h2>
-       <p>Good tools make application development quicker and easier to maintain than if you did everyth1ng by hand..</p>
-    </div>
-</div>
-<div class="flip flip-vertical">
-    <div class="front" >
-       <h3 class="text-shadow">ATTAQUES</h3>
-    </div>
-    <div class="back">
-       <h2>Angular</h2>
-       <p>Good tools make application development quicker and easier to maintain than if you did everyth1ng by hand..</p>
-    </div>
-</div>
-<div class="flip flip-vertical">
-    <div class="front" >
-       <h3 class="text-shadow">ATTAQUES</h3>
-    </div>
-    <div class="back">
-       <h2>Angular</h2>
-       <p>Good tools make application development quicker and easier to maintain than if you did everyth1ng by hand..</p>
-    </div>
-</div>
-</div>
-
-
-
-            <div className="POKEMON_ATTRIBUTE">
-                <IdentityAttribute data={this.state.pokemon}/>
+    <div >            
+        <h1>DETAIL PAGE OF {this.state.pokemon[NOM]}</h1>
+        <div class = "gallery">
+            <div class="clipped-border">
+                <img src={'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/'
+                    + this.state.pokemon.Numéro + '.png'} id="clipped" alt='Undefined' ></img>
             </div>
-            
-            
+        </div>            
+        <div class="headingWrapper">
+            <a href="" class="header header--pushDown header--shadow" title="INCROYABLE NON?">{this.state.pokemon[NOM]}</a>
+            <div className="ID">
+                <h6 data-heading="#">#{this.state.pokemon.Numéro}</h6>
+            </div> {/*DIV DE POKEMON_ID*/}
+        </div>
+    </div>
+
+    
 
             
-                <div className='POKEMON_ATTAQUES'>
-                    <Attaques list ={ this.state.pokemon.Attaques || [] }/>
-                </div>      
+    <div>
+        <div>
 
+        </div>
+    </div>
+    <table class="TABLE_PARENT_ATTRIBUTS">	        
+	    <tbody>
+		    <tr>
+		    	<td className="QUESTION">NOM (FR)</td>
+		    	<td className="ANSWER">{this.state.pokemon[NOM]}</td>
+		    	<td className="QUESTION">Éspèce</td>
+		    	<td className="ANSWER">{this.state.pokemon[espece]}</td>
+		    </tr>
+		    <tr>
+		    	<td className="QUESTION">NOM (EN)</td>
+		    	<td className="ANSWER">{this.state.pokemon[NOM2]}</td>
+		    	<td className="QUESTION">Taille</td>
+		    	<td className="ANSWER">{this.state.pokemon[taille]}</td>
+		    </tr>
+		    <tr>
+		    	<td className="QUESTION">NOM (JA)</td>
+		    	<td className="ANSWER">{this.state.pokemon[NOM3]}</td>
+		    	<td className="QUESTION">Poids</td>
+		    	<td className="ANSWER">{this.state.pokemon[poids]}</td>
+		    </tr>
+            <tr>    
+		    	<td className="QUESTION">NOM (TM)</td>
+		    	<td className="ANSWER">{this.state.pokemon[NOM4]}</td>
+		    	<td className="QUESTION">Type</td>
+		    	<td className="ANSWER">{this.state.pokemon[type]}</td>
+		    </tr>
+            <tr>    
+		    	<td className="QUESTION">NOM (DE)</td>
+		    	<td className="ANSWER">{this.state.pokemon[NOM5]}</td>
+		    	<td className="QUESTION">Couleur</td>
+		    	<td className="ANSWER">{this.state.pokemon[couleur]}</td>
+		    </tr>
+            <tr>    
+		    	<td> </td>
+		    	<td> </td>
+		    	<td className="QUESTION">Forme</td>
+		    	<td className="ANSWER">{this.state.pokemon[forme]}</td>
+		    </tr>
+	    </tbody>
+    </table>
 
-                <Slider></Slider>   
-                    
-                
-</div>
+    <Attaques list ={ this.state.pokemon.Attaques || [] }/>
+     
+
+</div> 
+
     
         )       
     }    

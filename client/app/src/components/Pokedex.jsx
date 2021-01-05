@@ -28,18 +28,30 @@ class Pokedex extends Component {
     render() {
         return (
 <div>
-            <div>
-                
-                <input className='search_bar' type="text" placeholder="Search..." value={this.state.value} onChange={this.handleChange} />
-                <div className="search">
-                </div>                
+
+    <div className="SEARCH-PARENT">
+        <div className="SEARCH_CHILD">
+            <div class="SEARCH_BOX">
+                <input type="text" placeholder="Search..." value={this.state.value} onChange={this.handleChange}></input>
+                    <div class="search">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div className="ALL_POK">    
+        <body className="BODY_POK">
             <div className='Pokedex'>
                 { this.state.pokemons
                     .filter(pokemon => { return !this.state.value || new RegExp(this.state.value).test( pokemon[NOM] )? true:false})                   
                     .map(pokemon => ( <PokemonCard id={pokemon.Numéro} name={pokemon[NOM]} type={pokemon.Type} image={pokemon.Numéro} /> ))}                
             </div>
-            </div>
+        </body>
+    </div>
 </div>
+            
+
         )       
     }    
 }
