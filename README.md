@@ -10,22 +10,22 @@
 
 # Objectif
 
-Créer un Pokedex (qui regroupe une liste de Pokemon),  des cartes qui prennent trois informations du Pokemon (Le nom, numéro et type). Il faut y avoir une barre de recherche qui puisse trouver le Pokemon cherché et une page qui regroupe les détails du Pokemon qui est accessible via le clic sur ce dernier.
+Créer un Pokedex (qui regroupe une liste de Pokemon),  des cartes qui prennent trois informations du Pokemon (Le nom, numéro et type). 
+- Doit contenir une barre de recherche qui permet de rechercher des Pokemons.
+- Une page qui regroupe les détails du Pokemon accessible par un clic depuis la page Pokedex.
 
 
 ## Démarrer le serveur
 
-Se localiser dans le dossier ./server, il faut ensuite le lancer via une commande.
+Se positionner dans le dossier ./server, il faut ensuite le lancer par :
 
-Voici les commandes : 
 - cd .\server\
 - **yarn dev**
 
 ## Démarrer le client
 
-Se localiser dans le dossier ./app, il faut ensuite le lancer via une commande.
+Se positionner dans le dossier ./server, il faut ensuite le lancer par :
 
-Voici les commandes : 
 - cd .\client\app\
 - **yarn start**
 
@@ -51,7 +51,9 @@ Vous pouvez voir tous mes travaux sur [https://github.com/Mathieu-ai](https://gi
 
 # Objective
 
-Create a Pokedex (which includes a list of Pokemon), where Pokemons are in cards that take three pieces of information from it (Name, Number and Type). There must be a search bar that find the Pokemon you are looking for and a page that shows the details of the Pokemon which is accessible by clicking on the card.
+Create a Pokedex (which includes a list of Pokemon), where Pokemons are in cards that take three pieces of information from it (Name, Number and Type)
+- There must be a search bar that find the Pokemon you are looking for
+- A page that shows the details of the Pokemon which is accessible by clicking on the card.
 
 
 ## Starting the server
