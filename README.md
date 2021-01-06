@@ -1,0 +1,85 @@
+──────▄▀▄─────▄▀▄
+─────▄█░░▀▀▀▀▀░░█▄
+─▄▄──█░░░░░░░░░░░█──▄▄
+█▄▄█─█░░▀░░┬░░▀░░█─█▄▄█
+
+# 𝙁𝙍𝘼𝙉𝘾̧𝘼𝙄𝙎
+
+# Projet cx-pokemon-react
+
+'cx-pokemon-react' est un projet où l'utilistaeur peut accéder à un Pokedex où se regroupe une liste de Pokemons. 
+
+# Objectif
+
+Créer un Pokedex (qui regroupe une liste de Pokemon),  des cartes qui prennent trois informations du Pokemon (Le nom, numéro et type). Il faut y avoir une barre de recherche qui puisse trouver le Pokemon cherché et une page qui regroupe les détails du Pokemon qui est accessible via le clic sur ce dernier.
+
+
+## Démarrer le serveur
+
+Se localiser dans le dossier ./server, il faut ensuite le lancer via une commande.
+
+Voici les commandes : 
+- cd .\server\
+- **yarn dev**
+
+## Démarrer le client
+
+Se localiser dans le dossier ./app, il faut ensuite le lancer via une commande.
+
+Voici les commandes : 
+- cd .\client\app\
+- **yarn start**
+
+
+## Changer de PORT
+
+Il faut changer le fichier **.env**
+> **ProTip:** Il ne  **FAUT PAS* mettre des espaces dans le **.env**.
+
+# GitHub
+
+Vous pouvez voir tous mes travaux sur [https://github.com/Mathieu-ai](https://github.com/Mathieu-ai)
+
+
+───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───
+───█▒▒░░░░░░░░░▒▒█───
+────█░░█░░░░░█░░█────
+─▄▄──█░░░▀█▀░░░█──▄▄─
+█░░█─▀▄░░░░░░░▄▀─█░░█
+
+
+# 𝓐𝓝𝓖𝓛𝓐𝓘𝓢
+# Project cx-pokemon-react
+
+'cx-pokemon-react' is a project where the user can access a Pokedex (where a list of Pokemons is gathered)
+
+# Objective
+
+Create a Pokedex (which includes a list of Pokemon), where Pokemons are in cards that take three pieces of information from it (Name, Number and Type). There must be a search bar that find the Pokemon you are looking for and a page that shows the details of the Pokemon which is accessible by clicking on the card.
+
+
+## Starting the server
+
+Change directory by going into the ./server folder, it must then be launched via a command. 
+
+Here are the commands:
+- cd .\server\
+- **yarn dev**
+
+## Starting the client
+
+Change directory by going into the ./server folder, it must then be launched via a command. 
+
+Here are the commands:
+- cd .\client\app\
+- **yarn start**
+
+
+## Change PORT
+
+You need to change it by editing the file named  **.env**
+> **ProTip:** *DO NOT*  create space in the **.env**.
+
+# GitHub
+
+You can see all my work by going in my GitHub :  [https://github.com/Mathieu-ai](https://github.com/Mathieu-ai)
