@@ -169,4 +169,3 @@ class PokedexDetails extends Component {
 
 export default PokedexDetails;
 
-// FIN DU PROJECT (っ◔◡◔)っ ❤

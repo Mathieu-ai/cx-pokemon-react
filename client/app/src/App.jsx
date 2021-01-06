@@ -50,4 +50,3 @@ class Home extends React.Component {
  
 export default App;
 
-// FIN DU PROJECT （っ＾▿＾）

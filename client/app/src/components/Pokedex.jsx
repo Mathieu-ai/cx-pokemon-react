@@ -58,4 +58,3 @@ class Pokedex extends Component {
 
 export default Pokedex;
 
-// FIN DU PROJECT (👍≖‿‿≖)👍 👍(≖‿‿≖👍)
