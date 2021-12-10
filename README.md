@@ -8,6 +8,12 @@
 
 'cx-pokemon-react' est un projet où l'utilistaeur peut accéder à un Pokedex où se regroupe une liste de Pokemons. 
 
+#DEMO
+
+
+https://user-images.githubusercontent.com/70896773/145582159-0de09067-a030-4c68-b67a-1a27d088f67d.mp4
+
+
 # Objectif
 
 Créer un Pokedex (qui regroupe une liste de Pokemon),  des cartes qui prennent trois informations du Pokemon (Le nom, numéro et type). 
@@ -39,10 +45,7 @@ Il faut changer le fichier **.env**
 
 Vous pouvez voir tous mes travaux sur [https://github.com/Mathieu-ai](https://github.com/Mathieu-ai)
 
-#DEMO
 
-
-https://user-images.githubusercontent.com/70896773/145582159-0de09067-a030-4c68-b67a-1a27d088f67d.mp4
 
 
 
@@ -53,6 +56,12 @@ https://user-images.githubusercontent.com/70896773/145582159-0de09067-a030-4c68-
 # Project cx-pokemon-react
 
 'cx-pokemon-react' is a project where the user can access a Pokedex (where a list of Pokemons is gathered)
+
+#DEMO
+
+
+https://user-images.githubusercontent.com/70896773/145582159-0de09067-a030-4c68-b67a-1a27d088f67d.mp4
+
 
 # Objective
 
@@ -86,7 +95,3 @@ You need to change it by editing the file named  **.env**
 # GitHub
 
 You can see all my work by going in my GitHub :  [https://github.com/Mathieu-ai](https://github.com/Mathieu-ai)
-
-#DEMO
-
-https://user-images.githubusercontent.com/70896773/145582231-3d9417a8-16ca-4376-b7fe-f1af8c6d6cca.mp4
