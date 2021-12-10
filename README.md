@@ -8,7 +8,7 @@
 
 'cx-pokemon-react' est un projet où l'utilistaeur peut accéder à un Pokedex où se regroupe une liste de Pokemons. 
 
-#DEMO
+# DEMO
 
 
 https://user-images.githubusercontent.com/70896773/145582159-0de09067-a030-4c68-b67a-1a27d088f67d.mp4
@@ -57,7 +57,7 @@ Vous pouvez voir tous mes travaux sur [https://github.com/Mathieu-ai](https://gi
 
 'cx-pokemon-react' is a project where the user can access a Pokedex (where a list of Pokemons is gathered)
 
-#DEMO
+# DEMO
 
 
 https://user-images.githubusercontent.com/70896773/145582159-0de09067-a030-4c68-b67a-1a27d088f67d.mp4
